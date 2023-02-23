@@ -9,13 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ScrollView {
+            LazyVStack {
+                ForEach(0...149, id: \.self) { i in
+                    HStack {
+                        Text("Row \(i)")
+                        Spacer()
+                    }
+                    .padding(20)
+                    .onAppear {
+                        print("Row \(i) on appear", Date())
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
